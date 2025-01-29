@@ -499,7 +499,7 @@ public class OneDimensionalArray {
                 }
             } else {
                 if ((nums[index] * 2 < nums[index + 1] || nums[index] / 2 > nums[index + 1])
-                        && (nums[index] * 2 < nums[index - 1] && nums[index] / 2 > nums[index - 1])) {
+                        && (nums[index] * 2 < nums[index - 1] || nums[index] / 2 > nums[index - 1])) {
                     counter++;
                 }
             }
