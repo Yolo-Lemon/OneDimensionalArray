@@ -557,6 +557,6 @@ public class OneDimensionalArray {
         }
         System.out.println("Task24: " + Arrays.toString(nums));
         System.out.println("Task24: " + Arrays.toString(nums1));
-        System.out.println();
+        System.out.println("");
     }
 }
