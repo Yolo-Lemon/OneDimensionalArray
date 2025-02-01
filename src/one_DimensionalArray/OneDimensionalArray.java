@@ -51,13 +51,8 @@ public class OneDimensionalArray {
         int[] nums = new int[7];
         int counter = 1;
         for (int index = 0; index < nums.length; index++) {
-            if (index == 0) {
-                nums[index] = 1;
-            } else {
-                counter += 2;
-                nums[index] = counter;
-                ;
-            }
+            nums[index] = counter;
+            counter += 2;
         }
         System.out.println("Task2: " + Arrays.toString(nums));
         System.out.println();
@@ -86,7 +81,7 @@ public class OneDimensionalArray {
                     break;
                 }
             }
-            if (primeNum == true) {
+            if (primeNum) {
                 nums[index] = i;
                 index++;
             }
@@ -100,12 +95,8 @@ public class OneDimensionalArray {
         int[] nums = new int[7];
         int counter = 2;
         for (int index = 0; index < nums.length; index++) {
-            if (index == 0) {
-                nums[index] = 2;
-            } else {
-                counter += 2;
-                nums[index] = counter;
-            }
+            nums[index] = counter;
+            counter += 2;
         }
         System.out.println("Task5: " + Arrays.toString(nums));
         System.out.println();
@@ -114,12 +105,12 @@ public class OneDimensionalArray {
     //Сформировать убывающий массив из чисел, которые делятся на 3.
     private static void oneDimensionalTask6() {
         int[] nums = new int[10];
-        int startNum = 51;
+        int startNum = 50;
         for (int index = 0; index < nums.length; index++) {
             for (int k = startNum; k > 0; k--) {
                 if (k % 3 == 0) {
                     nums[index] = k;
-                    startNum -= 3;
+                    startNum = (k - 1);
                     break;
                 }
             }
@@ -128,7 +119,7 @@ public class OneDimensionalArray {
         System.out.println();
     }
 
-    //Сформировать массив из случайных целых чисел от 0 до 9 , в котором единиц от 3 до 5 и двоек больше троек.
+    //Сформировать массив из случайных целых чисел от 0 до 9 , в котором единиц от 3 до 5 и двоек больше троек. &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
     private static void oneDimensionalTask7() {
         int[] nums = new int[10];
         int numb = 0;
@@ -171,29 +162,25 @@ public class OneDimensionalArray {
     }
 
     //Определить закономерность, согласно которой формируется числовая последовательность 1, 0, 2, 0, 3, 0, 4… 
-    //Написать функцию, которая формирует первые N элементов данной последовательности в виде целочисленного массива и выводит элементы массива на экран.
+    //Написать функцию, которая формирует первые N элементов данной последовательности в виде целочисленного массива и выводит элементы массива на экран.&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
     private static void oneDimensionalTask8() {
         int[] nums = new int[12];
         int startNum = 1;
         int k = 1;
         for (int index = 0; index < nums.length; index++) {
-            if (index == 0) {
-                k++;
-            } else if (index % 2 == 0) {
-                startNum += k;
+            if (index % 2 == 0) {
+                nums[index] = k;
                 k++;
             } else {
-                startNum *= 0;
+                nums[index] = 0;
             }
-            nums[index] = startNum;
         }
         System.out.println("Task8: " + Arrays.toString(nums));
         System.out.println();
     }
 
     //Определить закономерность, согласно которой формируется числовая последовательность 
-    //1, -4, 9, -16, 25… Написать функцию, которая формирует первые N элементов данной последовательности в виде целочисленного массива и выводит элементы массива на экран.
-
+    //1, -4, 9, -16, 25… Написать функцию, которая формирует первые N элементов данной последовательности в виде целочисленного массива и выводит элементы массива на экран.&&&&&&&&&&&&&&&
     private static void oneDimensionalTask9() {
         int[] nums = new int[12];
         int startNum = 0;
@@ -201,17 +188,13 @@ public class OneDimensionalArray {
         int num2 = -4;
         int l = 1;
         for (int index = 0; index < nums.length; index++) {
-            if (index == 0) {
+            if (index % 2 == 0) {
                 startNum = num1;
-            } else if (index == 1) {
-                startNum = num2;
-            } else if (index % 2 == 0) {
                 num1 += 8 * l;
                 l++;
-                startNum = num1;
             } else {
-                num2 *= num2 * (-1);
                 startNum = num2;
+                num2 *= (num2 * (-1));
             }
             nums[index] = startNum;
         }
@@ -260,11 +243,10 @@ public class OneDimensionalArray {
         foundIndex = Arrays.binarySearch(nums, x);
         if (foundIndex < 0) {
             System.out.println("Task11: Заданного числа \"" + x + "\" нет в массиве");
-            System.out.println();
         } else {
             System.out.println("Task11: индекс искомого числа \"" + x + "\" = " + foundIndex);
-            System.out.println();
         }
+        System.out.println();
     }
 
     //Найдите сумму четных чисел массива.
@@ -318,7 +300,7 @@ public class OneDimensionalArray {
         System.out.println();
     }
 
-    //Дан массив x из n элементов. Найдите x1−x2+x3−…−xn−1+xn. &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+    //Дан массив x из n элементов. Найдите x1−x2+x3−…−xn−1+xn.
     private static void oneDimensionalTask15() {
         int[] nums = new int[20];
         int numb = 0;
@@ -375,7 +357,7 @@ public class OneDimensionalArray {
         }
         System.out.println("Task17: " + Arrays.toString(nums));
         for (int index = 0; index < nums.length - 1; index++) {
-            if (index % 2 == 0) {
+            if (nums[index] % 2 != 0) {
                 continue;
             } else {
                 nums[index] += nums[nums.length - 1];
@@ -391,23 +373,23 @@ public class OneDimensionalArray {
         int numb = 0;
         int hitCounter = 0;
         int counter = 0;
-        int result = 0;
         for (int index = 0; index < nums.length; index++) {
             numb = new Random().nextInt(0, 10);
             nums[index] = numb;
         }
         for (int index = 0; index < nums.length; index++) {
-            counter++;
-            for (int k = index + 1; k < nums.length; k++) {
+            hitCounter = 0;
+            for (int k = 0; k < nums.length; k++) {
                 if (nums[index] == nums[k]) {
                     hitCounter++;
-                    break;
                 }
             }
-            result = counter - hitCounter;
+            if (hitCounter == 1) {
+                counter++;
+            }
         }
         System.out.println("Task18: " + Arrays.toString(nums));
-        System.out.println("Task18: количество уникальных элементов в масиве " + result);
+        System.out.println("Task18: количество уникальных элементов в масиве " + counter);
         System.out.println();
     }
 
@@ -436,8 +418,8 @@ public class OneDimensionalArray {
     private static void oneDimensionalTask20() {
         int[] nums = new int[6];
         int numb = 0;
-        int min = 101;
-        int max = 0;
+        int min = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
         int indexMax = 0;
         int indexMin = 0;
         int z = 0;
@@ -463,15 +445,15 @@ public class OneDimensionalArray {
 
     //Заменить каждый элемент массива с четным номером на соседний слева элемент.
     private static void oneDimensionalTask21() {
-        int[] nums = new int[10];
+        int[] nums = new int[11];
         int numb = 0;
         for (int index = 0; index < nums.length; index++) {
             numb = new Random().nextInt(0, 10);
             nums[index] = numb;
         }
         System.out.println("Task21: " + Arrays.toString(nums));
-        for (int index = 0; index < nums.length; index++) {
-            if (index % 2 != 0) {
+        for (int index = 1; index < nums.length; index++) {
+            if (index % 2 == 0) {
                 nums[index] = nums[index - 1];
             }
         }
@@ -536,23 +518,26 @@ public class OneDimensionalArray {
     //Удалить самый маленький элемент массива.
     private static void oneDimensionalTask24() {
         int[] nums = new int[10];
-        int[] nums1 = new int[nums.length - 1];
         int numb = 0;
-        int min = 101;
-        int indexMin = 0;
+        int counter = 0;
+        int min = Integer.MAX_VALUE;
         for (int index = 0; index < nums.length; index++) {
-            numb = new Random().nextInt(0, 100);
+            numb = new Random().nextInt(0, 10);
             nums[index] = numb;
             if (min > nums[index]) {
                 min = nums[index];
-                indexMin = index;
             }
         }
-        for (int index = 0; index < nums1.length; index++) {
-            if (index < indexMin) {
-                nums1[index] = nums[index];
-            } else if (index >= indexMin) {
-                nums1[index] = nums[index + 1];
+        for (int index = 0; index < nums.length; index++) {
+            if (nums[index] == min) {
+                counter++;
+            }
+        }
+        int[] nums1 = new int[nums.length - counter];
+        for (int index = 0, k = 0; k < nums1.length; index++) {
+            if (nums[index] != min) {
+                nums1[k] = nums[index];
+                k++;
             }
         }
         System.out.println("Task24: " + Arrays.toString(nums));
