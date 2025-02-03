@@ -121,22 +121,13 @@ public class OneDimensionalArray {
 
     //Сформировать массив из случайных целых чисел от 0 до 9 , в котором единиц от 3 до 5 и двоек больше троек. &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
     private static void oneDimensionalTask7() {
-        int[] nums = new int[10];
-        int numb = 0;
+        int[] nums = new int[20];
         int count1 = 0;
         int count2 = 0;
         int count3 = 0;
-        for (int index = 0;; index++) {
-
-            if (index == nums.length) {
-                index -= 9;
-                count1 = 0;
-                count2 = 0;
-                count3 = 0;
-            }
-            numb = new Random().nextInt(0, 9);
-
-            switch (numb) {
+        for (int index = 0; index < nums.length; index++) {
+            nums[index] = new Random().nextInt(0,10);
+            switch (nums[index]) {
                 case 1: {
                     count1++;
                     break;
@@ -150,13 +141,39 @@ public class OneDimensionalArray {
                     break;
                 }
                 default: {
+                    break;
                 }
             }
-            nums[index] = numb;
-            if (count1 >= 3 && count1 <= 5 && count2 > count3) {
-                break;
+        }
+        for (int index = 0; index < nums.length; index++) {
+            if (count1 < 3) {
+                if (nums[index] == 1 || nums[index] == 2 || nums[index] == 3) {
+                    continue;
+                } else {
+                    nums[index] = 1;
+                    count1++;
+                }
+            } else if (count1 > 5) {
+                if (nums[index] == 2 || nums[index] == 3) {
+                    continue;
+                } else if (nums[index] == 1) {
+                    nums[index] = 2;
+                    count1--;
+                }
             }
         }
+        for (int index = 0; index < nums.length; index++) {
+            if (count2 <= count3) {
+                if (nums[index] == 1 || nums[index] == 2) {
+                    continue;
+                } else if (nums[index] == 3) {
+                    nums[index] = 2;
+                    count2++;
+                    count3--;
+                }
+            }
+        }
+
         System.out.println("Task7: " + Arrays.toString(nums));
         System.out.println();
     }
@@ -182,21 +199,13 @@ public class OneDimensionalArray {
     //Определить закономерность, согласно которой формируется числовая последовательность 
     //1, -4, 9, -16, 25… Написать функцию, которая формирует первые N элементов данной последовательности в виде целочисленного массива и выводит элементы массива на экран.&&&&&&&&&&&&&&&
     private static void oneDimensionalTask9() {
-        int[] nums = new int[12];
-        int startNum = 0;
-        int num1 = 1;
-        int num2 = -4;
-        int l = 1;
-        for (int index = 0; index < nums.length; index++) {
-            if (index % 2 == 0) {
-                startNum = num1;
-                num1 += 8 * l;
-                l++;
-            } else {
-                startNum = num2;
-                num2 *= (num2 * (-1));
+        double[] nums = new double[12];
+        double l = 1;
+        for (int index = 0; index < nums.length; index++, l++) {
+            nums[index] = Math.pow(l, 2);
+            if (index % 2 != 0) {
+                nums[index] *= -1;
             }
-            nums[index] = startNum;
         }
         System.out.println("Task9: " + Arrays.toString(nums));
         System.out.println();
